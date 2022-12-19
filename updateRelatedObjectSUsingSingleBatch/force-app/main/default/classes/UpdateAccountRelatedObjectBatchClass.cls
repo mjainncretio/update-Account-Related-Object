@@ -21,7 +21,7 @@ public with sharing class UpdateAccountRelatedObjectBatchClass implements Databa
         List<Task> updateTask = new List<Task>();
         
         List<Contact> relatedContacts = [SELECT Id, AccountId FROM Contact WHERE AccountId IN: accountUpdatedWithAddress];      
-        List<Opportunity> relatedOpportunities =  [SELECT Id, AccountId FROM Opportunity WHERE AccountId =: accountUpdatedWithPhone];
+        List<Opportunity> relatedOpportunities =  [SELECT Id, AccountId FROM Opportunity WHERE AccountId IN: accountUpdatedWithPhone];
         List<Task> relatedTasks = [SELECT Id FROM Task WHERE whoId IN: relatedContacts];
         
         for(Account account : accountList)
