@@ -11,15 +11,15 @@ public with sharing class UpdateAccountRelatedObjectBatchClass implements Databa
     }
     
     //batch class start that return all updated account
-    public Database.QueryLocator start(Database.BatchableContext bC)
+    public Database.QueryLocator start(Database.BatchableContext bc)
     {
         return Database.getQueryLocator([SELECT Id, BillingCity, Phone 
                                          FROM Account 
-                                         WHERE Id IN :accountUpdatedWithAddress OR Id IN :accountUpdatedWithPhone ]);
+                                         WHERE Id IN :accountUpdatedWithAddress OR Id IN :accountUpdatedWithPhone]);
     }
     
     //batch class execute
-    public void execute(Database.BatchableContext bC, List<Account> accountList)
+    public void execute(Database.BatchableContext bc, List<Account> accountList)
     {
         //Initializing the list that to be updated
         List<Contact> updateContact = new List<Contact>();
