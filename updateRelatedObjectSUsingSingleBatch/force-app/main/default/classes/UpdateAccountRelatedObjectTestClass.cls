@@ -183,7 +183,7 @@ private with sharing class UpdateAccountRelatedObjectTestClass
             System.assertEquals('kota', contact.OtherCity);
         }
         
-        List<Task> updatedTask = [SELECT Id, Status FROM Task WHERE whoId = :contactSecond.Id];
+        List<Task> updatedTask = [SELECT Id, Status FROM Task WHERE WhoId = :contactSecond.Id];
         
         for(Task task : updatedTask)
         {
